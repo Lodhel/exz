@@ -1,0 +1,85 @@
+/* Общие стили */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.app {
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+}
+
+nav ul li {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+
+/* Слайдер */
+.slider {
+  display: flex;
+  overflow-x: scroll;
+  gap: 10px;
+}
+
+.slider img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+/* Список услуг */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.service-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Личный кабинет */
+.user-profile {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input, textarea, button {
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
