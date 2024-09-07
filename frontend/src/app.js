@@ -4,10 +4,10 @@ import './styles/main.css';
 // Компонент слайдера для главной страницы
 const Slider = () => (
   <div className="slider">
-    <img src={require('./assets/images_1.jpg')} alt="Slide 1" className="slider-img" />
-    <img src={require('./assets/images_2.jpg')} alt="Slide 2" className="slider-img" />
-    <img src={require('./assets/images_3.jpg')} alt="Slide 3" className="slider-img" />
-    <img src={require('./assets/images.jpg')} alt="Slide 4" className="slider-img" />
+    <img src={require('./assets/images_1.jpg')} className="slider-img" />
+    <img src={require('./assets/images_2.jpg')} className="slider-img" />
+    <img src={require('./assets/images_3.jpg')} className="slider-img" />
+    <img src={require('./assets/images.jpg')} className="slider-img" />
   </div>
 );
 // Главная страница
@@ -111,17 +111,17 @@ const AboutPage = () => (
         <h3>Белова Светлана</h3>
         <p>Опыт работы с лошадьми более 15 лет.</p>
         <p>Училась в Московской конно-спортивной школе.</p>
-      <img src={require('./assets/a-girl-with-a-horse-in-nature-an-autumn-walk-with-an-animal_215924-1238.jpg')} alt="Slide 4" className="slider-img" />
+      <img src={require('./assets/a-girl-with-a-horse-in-nature-an-autumn-walk-with-an-animal_215924-1238.jpg')} className="service-img" />
       </div>
       <div className="team-member">
         <h3>Вольхина Александра</h3>
         <p>Работает с лошадьми более 12 лет. Училась в Московской школе наездников. Тренер-наездник лошадей, инструктор верховой езды. Квалификации: наездник 3 категории.</p>
-        <img src={require('./assets/woman-walking-with-a-horse-in-the-countryside_23-2148200933.jpg')} alt="Slide 4" className="slider-img" />
+        <img src={require('./assets/woman-walking-with-a-horse-in-the-countryside_23-2148200933.jpg')} className="service-img" />
       </div>
       <div className="team-member">
         <h3>Лекомцев Роман</h3>
         <p>Опыт работы с лошадьми более 15 лет.</p>
-        <img src={require('./assets/close-up-on-farmer-with-beautiful-horse_23-2149140364.jpg')} alt="Slide 4" className="slider-img" />
+        <img src={require('./assets/close-up-on-farmer-with-beautiful-horse_23-2149140364.jpg')} className="service-img" />
       </div>
         </div>
   </div>
@@ -167,29 +167,96 @@ const BookingForm = () => {
 };
 
 // Страница с мероприятиями
-const EventsPage = () => (
-  <div className="events-page">
-    <h2>Предстоящие мероприятия</h2>
-    <div className="calendar">
-    <p>
-        01 сентября 2024
-        Всероссийские физкультурные соревнования по конкуру для всадников на лошадях буденовской и донской породы "Золотой пьедистал" : мужчины/женщины (LL); мужчины/женщины на лошади до 6 лет; юноши/девушки 14-18 лет (LL).
-    </p>
-    <p>
-        06 сентября 2024
-        Кубок Республики Татарстан по выездке
-    </p>
-    <p>
-        21 сентября 2024
-        Осенний Кубок КСК «Дивный» по конкуру
-    </p>
-    <p>
-        30 сентября 2024
-        Региональные соревнования по выездке
-    </p>
+const EventsPage = () => {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [formData, setFormData] = useState({ name: '', email: '' });
+
+  const handleRegisterClick = (event) => {
+    setSelectedEvent(event);
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Запись подтверждена на мероприятие: ${selectedEvent} для ${formData.name}`);
+    setSelectedEvent(null); // Сброс выбранного мероприятия после записи
+  };
+
+  return (
+    <div className="events-page">
+      <h2>Предстоящие мероприятия</h2>
+      <div className="calendar">
+        <div>
+          <img src={require('./assets/12130.jpg')} className="service-img" alt="Event 1" />
+          <p>
+            01 сентября 2024
+            Всероссийские физкультурные соревнования по конкуру для всадников на лошадях буденовской и донской породы "Золотой пьедистал": мужчины/женщины (LL); мужчины/женщины на лошади до 6 лет; юноши/девушки 14-18 лет (LL).
+          </p>
+          <button onClick={() => handleRegisterClick('Всероссийские соревнования по конкуру')} className="register-button">
+            Записаться
+          </button>
+        </div>
+
+        <div>
+          <img src={require('./assets/7JJfjalFV0qltFPwyRV72qoifRPRqlHGOBI0-L4EVWNg2clbyI_XzcnslematqK4K6YZ4vREyQYSrlZ-EFVouhlV.jpg')} className="service-img" alt="Event 2" />
+          <p>06 сентября 2024 Кубок Республики Татарстан по выездке</p>
+          <button onClick={() => handleRegisterClick('Кубок Республики Татарстан по выездке')} className="register-button">
+            Записаться
+          </button>
+        </div>
+
+        <div>
+          <img src={require('./assets/D60_3662.jpg')} className="service-img" alt="Event 3" />
+          <p>21 сентября 2024 Осенний Кубок КСК «Дивный» по конкуру</p>
+          <button onClick={() => handleRegisterClick('Осенний Кубок КСК «Дивный» по конкуру')} className="register-button">
+            Записаться
+          </button>
+        </div>
+
+        <div>
+          <img src={require('./assets/1000032518.jpg')} className="service-img" alt="Event 4" />
+          <p>30 сентября 2024 Региональные соревнования по выездке</p>
+          <button onClick={() => handleRegisterClick('Региональные соревнования по выездке')} className="register-button">
+            Записаться
+          </button>
+        </div>
+      </div>
+
+      {selectedEvent && (
+        <div className="registration-form">
+          <h3>Запись на мероприятие: {selectedEvent}</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Ваше имя:</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Email для подтверждения:</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit">Подтвердить запись</button>
+          </form>
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
+
 // Страница с контактами
 const ContactPage = () => (
   <div className="contact-page">
