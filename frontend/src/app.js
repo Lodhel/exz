@@ -418,21 +418,21 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      <nav>
-        <ul>
-          <li onClick={() => setCurrentPage('home')}>Главная</li>
-          <li onClick={() => setCurrentPage('services')}>Услуги</li>
-          <li onClick={() => setCurrentPage('about')}>О клубе</li>
-          <li onClick={() => setCurrentPage('booking')}>Запись</li>
-          <li onClick={() => setCurrentPage('events')}>Мероприятия</li>
-          <li onClick={() => setCurrentPage('contact')}>Контакты</li>
-          <li onClick={() => setCurrentPage('profile')}>Личный кабинет</li>
-        </ul>
-      </nav>
-      {renderPage()}
-    </div>
-  );
+  <div className="app">
+    <nav className="navbar">
+      <ul className="nav-list">
+        <li className={`nav-item ${currentPage === 'home' ? 'active' : ''}`} onClick={() => setCurrentPage('home')}>Главная</li>
+        <li className={`nav-item ${currentPage === 'services' ? 'active' : ''}`} onClick={() => setCurrentPage('services')}>Услуги</li>
+        <li className={`nav-item ${currentPage === 'about' ? 'active' : ''}`} onClick={() => setCurrentPage('about')}>О клубе</li>
+        <li className={`nav-item ${currentPage === 'booking' ? 'active' : ''}`} onClick={() => setCurrentPage('booking')}>Запись</li>
+        <li className={`nav-item ${currentPage === 'events' ? 'active' : ''}`} onClick={() => setCurrentPage('events')}>Мероприятия</li>
+        <li className={`nav-item ${currentPage === 'contact' ? 'active' : ''}`} onClick={() => setCurrentPage('contact')}>Контакты</li>
+        <li className={`nav-item ${currentPage === 'profile' ? 'active' : ''}`} onClick={() => setCurrentPage('profile')}>Личный кабинет</li>
+      </ul>
+    </nav>
+    {renderPage()}
+  </div>
+);
 };
 
 export default App;

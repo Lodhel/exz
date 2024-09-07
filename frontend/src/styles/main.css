@@ -7,22 +7,52 @@ body {
 }
 
 .app {
-  padding: 20px;
+  font-family: 'Arial', sans-serif;
 }
 
-nav ul {
-  list-style: none;
+/* Навигация */
+.navbar {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+.nav-list {
   display: flex;
-  gap: 15px;
+  justify-content: center;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-nav ul li {
+.nav-item {
+  margin: 0 20px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 1.2rem;
   cursor: pointer;
-  padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+}
+
+.nav-item:hover {
+  background-color: #555;
+}
+
+.active {
   background-color: #4CAF50;
   color: white;
-  border-radius: 5px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+  }
 }
 
 h1, h2, h3 {
