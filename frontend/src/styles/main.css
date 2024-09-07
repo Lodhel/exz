@@ -34,9 +34,63 @@ p {
 }
 
 /* Слайдер */
+/* Контейнер для слайдера */
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+/* Контейнер для изображений слайдера */
+.slider-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  padding: 10px;
+  transition: transform 0.5s ease;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Скрываем полосу прокрутки для чистого интерфейса */
+}
+
+/* Изображения в слайдере */
 .slider-img {
+  width: 150px;
+  height: 150px;
   border-radius: 8px;
   scroll-snap-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Добавление эффекта при наведении */
+.slider-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Навигационные стрелки для слайдера */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider-arrow.left {
+  left: 10px;
+}
+
+.slider-arrow.right {
+  right: 10px;
 }
 
 /* Список услуг */
@@ -115,3 +169,76 @@ button {
   align-items: flex-start;
   margin-bottom: 20px;
 }
+
+/* Основные стили */
+.homepage {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.homepage-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.homepage-description {
+  font-size: 1.2em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.section {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Стили для списка мероприятий и анонсов */
+.announcement-list {
+  list-style: none;
+  padding: 0;
+}
+
+.announcement-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.announcement-item img {
+  width: 150px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-item p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .announcement-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .announcement-item img {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+}
+

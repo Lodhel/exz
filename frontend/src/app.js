@@ -4,69 +4,78 @@ import './styles/main.css';
 // Компонент слайдера для главной страницы
 const Slider = () => (
   <div className="slider">
-    <img src={require('./assets/images_1.jpg')} className="slider-img" />
-    <img src={require('./assets/images_2.jpg')} className="slider-img" />
-    <img src={require('./assets/images_3.jpg')} className="slider-img" />
-    <img src={require('./assets/images.jpg')} className="slider-img" />
+    <div className="slider-container">
+      <img src={require('./assets/images_1.jpg')} className="slider-img" alt="Slide 1" />
+      <img src={require('./assets/images_2.jpg')} className="slider-img" alt="Slide 2" />
+      <img src={require('./assets/images_3.jpg')} className="slider-img" alt="Slide 3" />
+      <img src={require('./assets/images.jpg')} className="slider-img" alt="Slide 4" />
+    </div>
   </div>
 );
 // Главная страница
 const HomePage = () => (
   <div className="homepage">
-    <h1>Приходи и отдохни от суеты!</h1>
-    <p>Конный клуб – не только самый крупный, но и один из самых популярных в Московской области.</p>
-    <p>Сегодня в хозяйстве 40 лошадей русской рысистой, тяжеловозной и вятской пород. Так же имеются козы, овцы, кролики, индюки, курицы, собаки.</p>
-    <p>Для особо искушенных туристов есть русская баня, родниковая купель и веревочный троллей.</p>
-    <p>Верховая езда – это настоящая панацея для современного общества, в жизни которого преобладает сидячий образ жизни, повышенные умственные нагрузки, работа с гаджетами. А еще – это профилактика и лечение многих болезней, снятие стресса, чувства тревоги, психологическая разгрузка.</p>
-    <div className="announcements">
+    <h1 className="homepage-title">Приходи и отдохни от суеты!</h1>
+    <p className="homepage-description">
+      Конный клуб – не только самый крупный, но и один из самых популярных в Московской области.
+    </p>
+    <p className="homepage-description">
+      Сегодня в хозяйстве 40 лошадей русской рысистой, тяжеловозной и вятской пород. Также имеются козы, овцы, кролики, индюки, курицы, собаки.
+    </p>
+    <p className="homepage-description">
+      Для особо искушенных туристов есть русская баня, родниковая купель и веревочный троллей.
+    </p>
+    <p className="homepage-description">
+      Верховая езда – это настоящая панацея для современного общества, в жизни которого преобладает сидячий образ жизни, повышенные умственные нагрузки, работа с гаджетами. А еще – это профилактика и лечение многих болезней, снятие стресса, чувства тревоги, психологическая разгрузка.
+    </p>
+
+    <div className="section announcements">
       <h2>Мероприятия</h2>
-      <ul>
-        <li>
+      <ul className="announcement-list">
+        <li className="announcement-item">
           <img src={require('./assets/12130.jpg')} alt="Всероссийские соревнования по конкуру" className="announcement-img" />
           <p>
-            01 сентября 2024 Всероссийские физкультурные соревнования по конкуру для всадников на лошадях буденовской и донской породы "Золотой пьедистал": мужчины/женщины (LL); мужчины/женщины на лошади до 6 лет; юноши/девушки 14-18 лет (LL).
+            01 сентября 2024 Всероссийские физкультурные соревнования по конкуру для всадников на лошадях буденовской и донской породы.
           </p>
         </li>
-        <li>
+        <li className="announcement-item">
           <img src={require('./assets/7JJfjalFV0qltFPwyRV72qoifRPRqlHGOBI0-L4EVWNg2clbyI_XzcnslematqK4K6YZ4vREyQYSrlZ-EFVouhlV.jpg')} alt="Кубок Республики Татарстан" className="announcement-img" />
           <p>06 сентября 2024 Кубок Республики Татарстан по выездке</p>
         </li>
-        <li>
+        <li className="announcement-item">
           <img src={require('./assets/D60_3662.jpg')} alt="Осенний Кубок КСК Дивный" className="announcement-img" />
           <p>21 сентября 2024 Осенний Кубок КСК «Дивный» по конкуру</p>
         </li>
-        <li>
+        <li className="announcement-item">
           <img src={require('./assets/1000032518.jpg')} alt="Региональные соревнования по выездке" className="announcement-img" />
           <p>30 сентября 2024 Региональные соревнования по выездке</p>
         </li>
       </ul>
     </div>
-    <div className="announcements">
+
+    <div className="section announcements">
       <h2>Анонсы событий</h2>
-      <ul>
-        <li>
-          <img src={require('./assets/a-girl-with-a-horse-in-nature-an-autumn-walk-with-an-animal_215924-1238.jpg')} alt="Региональные соревнования по выездке" className="announcement-img" />
-            <p>1. VIII Всероссийская выставка лошадей вятской породы "Золотая Вятка - 2024"
-              // Главное породное событие в мире ВЯТОК.</p>
+      <ul className="announcement-list">
+        <li className="announcement-item">
+          <img src={require('./assets/a-girl-with-a-horse-in-nature-an-autumn-walk-with-an-animal_215924-1238.jpg')} alt="Выставка лошадей" className="announcement-img" />
+          <p>VIII Всероссийская выставка лошадей вятской породы "Золотая Вятка - 2024"</p>
         </li>
-        <li>
-          <img src={require('./assets/1000032518.jpg')} alt="Региональные соревнования по выездке" className="announcement-img" />
-            <p>2. Эко-продукты
-            // Теперь Вы можете у нас не только отдохнуть, но и приобрести натуральные продукты, изготовленные жителями.</p>
+        <li className="announcement-item">
+          <img src={require('./assets/1000032518.jpg')} alt="Эко-продукты" className="announcement-img" />
+          <p>Теперь Вы можете приобрести натуральные продукты, изготовленные местными жителями.</p>
         </li>
-        <li>
-          <img src={require('./assets/orig.jpg')} alt="Региональные соревнования по выездке" className="announcement-img" />
-            <p>3. Светлая Масленица
-            // Масленица - это прощание с зимой и встреча весны, несущей оживление в природе и солнечное тепло. Раньше верили, если в масляную неделю запрячь лошадь в сани, украсить цветными лентами и проехать по всей деревне, весна наступит быстрее.</p>
+        <li className="announcement-item">
+          <img src={require('./assets/orig.jpg')} alt="Светлая Масленица" className="announcement-img" />
+          <p>Светлая Масленица — прощание с зимой и встреча весны.</p>
         </li>
-        <li>
-          <img src={require('./assets/33ff5023-0de1-4da0-b52a-1b957448c2ba.jpg')} alt="Региональные соревнования по выездке" className="announcement-img" />
-            <p>4. Праздник Ивана Купала
-            // 6-7 июля нас с вами ждет один из самых мистических и красивых праздников Ивана Купала. Начало в 19:00.</p>
+        <li className="announcement-item">
+          <img src={require('./assets/33ff5023-0de1-4da0-b52a-1b957448c2ba.jpg')} alt="Праздник Ивана Купала" className="announcement-img" />
+          <p>6-7 июля 2024 — праздник Ивана Купала.</p>
         </li>
       </ul>
     </div>
-  <Slider />
+
+    <Slider />
   </div>
 );
 // Страница с услугами
