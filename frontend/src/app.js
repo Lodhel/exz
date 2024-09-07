@@ -49,7 +49,7 @@ const HomePage = () => (
         </li>
         <li>
             2. Эко-продукты
-            // еперь Вы можете у нас не только отдохнуть, но и приобрести натуральные продукты, изготовленные жителями.
+            // Теперь Вы можете у нас не только отдохнуть, но и приобрести натуральные продукты, изготовленные жителями.
         </li>
         <li>
             3. Светлая Масленица
@@ -167,7 +167,7 @@ const BookingForm = () => {
 };
 
 // Страница с мероприятиями
-const EventsPage = () => {
+const EventsPage = ({ onAddBooking }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '' });
 
@@ -181,6 +181,7 @@ const EventsPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onAddBooking({ event: selectedEvent, name: formData.name, email: formData.email });
     alert(`Запись подтверждена на мероприятие: ${selectedEvent} для ${formData.name}`);
     setSelectedEvent(null); // Сброс выбранного мероприятия после записи
   };
@@ -193,7 +194,7 @@ const EventsPage = () => {
           <img src={require('./assets/12130.jpg')} className="service-img" alt="Event 1" />
           <p>
             01 сентября 2024
-            Всероссийские физкультурные соревнования по конкуру для всадников на лошадях буденовской и донской породы "Золотой пьедистал": мужчины/женщины (LL); мужчины/женщины на лошади до 6 лет; юноши/девушки 14-18 лет (LL).
+            Всероссийские физкультурные соревнования по конкуру для всадников на лошадях буденовской и донской породы "Золотой пьедестал": мужчины/женщины (LL); мужчины/женщины на лошади до 6 лет; юноши/девушки 14-18 лет (LL).
           </p>
           <button onClick={() => handleRegisterClick('Всероссийские соревнования по конкуру')} className="register-button">
             Записаться
@@ -288,7 +289,7 @@ const ContactPage = () => (
 );
 
 // Личный кабинет пользователя
-const UserProfile = () => {
+const UserProfile = ({ bookings }) => {
   const [user, setUser] = useState({
     name: 'Имя пользователя',
     email: 'email@example.com'
@@ -300,18 +301,36 @@ const UserProfile = () => {
       <form>
         <div className="form-group">
           <label>Имя:</label>
-          <input type="text" name="name" value={user.name} onChange={(e) => setUser({...user, name: e.target.value})} />
+          <input
+            type="text"
+            name="name"
+            value={user.name}
+            onChange={(e) => setUser({ ...user, name: e.target.value })}
+          />
         </div>
         <div className="form-group">
           <label>Email:</label>
-          <input type="email" name="email" value={user.email} onChange={(e) => setUser({...user, email: e.target.value})} />
+          <input
+            type="email"
+            name="email"
+            value={user.email}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
+          />
         </div>
         <button type="submit">Сохранить изменения</button>
       </form>
+
       <h3>История записей</h3>
       <ul>
-        <li>Запись на 25 сентября — Турнир по конкуру</li>
-        <li>Запись на 5 октября — Тренировка для начинающих</li>
+        {bookings.length > 0 ? (
+          bookings.map((booking, index) => (
+            <li key={index}>
+              Запись на {booking.event} для {booking.name} (Email: {booking.email})
+            </li>
+          ))
+        ) : (
+          <li>Записей нет</li>
+        )}
       </ul>
     </div>
   );
@@ -320,7 +339,14 @@ const UserProfile = () => {
 // Основной компонент приложения
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
+  const [bookings, setBookings] = useState([]); // Состояние для хранения записей
 
+  // Функция для добавления новой записи в историю
+  const handleAddBooking = (newBooking) => {
+    setBookings((prevBookings) => [...prevBookings, newBooking]);
+  };
+
+  // Рендер страницы в зависимости от текущего состояния
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
@@ -332,11 +358,11 @@ const App = () => {
       case 'booking':
         return <BookingForm />;
       case 'events':
-        return <EventsPage />;
+        return <EventsPage onAddBooking={handleAddBooking} />; // Передаём функцию для записи
       case 'contact':
         return <ContactPage />;
       case 'profile':
-        return <UserProfile />;
+        return <UserProfile bookings={bookings} />; // Передаём записи в личный кабинет
       default:
         return <HomePage />;
     }
