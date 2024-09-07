@@ -34,15 +34,9 @@ p {
 }
 
 /* Слайдер */
-.slider {
-  display: flex;
-  overflow-x: scroll;
-  gap: 10px;
-}
-
-.slider img {
-  width: 300px;
-  border-radius: 10px;
+.slider-img {
+  border-radius: 8px;
+  scroll-snap-align: center;
 }
 
 /* Список услуг */
@@ -82,4 +76,11 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.service-img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }

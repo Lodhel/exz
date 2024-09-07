@@ -4,8 +4,10 @@ import './styles/main.css';
 // Компонент слайдера для главной страницы
 const Slider = () => (
   <div className="slider">
-    <img src="/path-to-image1.jpg" alt="Мероприятие 1" />
-    <img src="/path-to-image2.jpg" alt="Мероприятие 2" />
+    <img src={require('./assets/images_1.jpg')} alt="Slide 1" className="slider-img" />
+    <img src={require('./assets/images_2.jpg')} alt="Slide 2" className="slider-img" />
+    <img src={require('./assets/images_3.jpg')} alt="Slide 3" className="slider-img" />
+    <img src={require('./assets/images.jpg')} alt="Slide 4" className="slider-img" />
   </div>
 );
 // Главная страница
@@ -66,11 +68,11 @@ const ServicesPage = () => {
   const [filter, setFilter] = useState('');
 
   const services = [
-    { id: 1, name: 'Конные прогулки по живописному лесу', price: '1200 руб.' },
-    { id: 2, name: 'Обучение верховой езде для взрослых и детей от 2-х лет', price: '1500 руб.' },
-    { id: 3, name: 'Фотосессии с лошадьми', price: '1000 руб.' },
-    { id: 3, name: 'Экскурсии на конюшню', price: '800 руб.' },
-    { id: 3, name: 'Подарочные сертификаты', price: '2000 руб.' }
+    { id: 1, name: 'Конные прогулки по живописному лесу', price: '1200 руб.', img: require('./assets/00001_8145c731916529ce61c1a1a441f71ab5.jpg')},
+    { id: 2, name: 'Обучение верховой езде для взрослых и детей от 2-х лет', price: '1500 руб.', img: require('./assets/6a5d61a0c77705837a1897a504238b02.jpg')},
+    { id: 3, name: 'Фотосессии с лошадьми', price: '1000 руб.', img: require('./assets/e0aFQis78m8.jpg')},
+    { id: 3, name: 'Экскурсии на конюшню', price: '800 руб.', img: require('./assets/mZRv9J6revTH0CNhXk9N6VG643ktyQMSnb5OCjNId8Eo2Q5YqQ7DZtTpTSzRM5HS9sjuxwTUqZvpngZh-DQOkGBW.jpg')},
+    { id: 3, name: 'Подарочные сертификаты', price: '2000 руб.', img: require('./assets/thumb_1280__1296462536.jpg')}
   ];
   const filteredServices = services.filter(service => service.name.includes(filter));
 
@@ -80,6 +82,7 @@ const ServicesPage = () => {
       <div className="services-list">
         {filteredServices.map(service => (
           <div key={service.id} className="service-item">
+          <img src={service.img} alt={service.name} className="service-img" />
             <h3>{service.name}</h3>
             <p>{service.price}</p>
           </div>
@@ -108,14 +111,17 @@ const AboutPage = () => (
         <h3>Белова Светлана</h3>
         <p>Опыт работы с лошадьми более 15 лет.</p>
         <p>Училась в Московской конно-спортивной школе.</p>
+      <img src={require('./assets/a-girl-with-a-horse-in-nature-an-autumn-walk-with-an-animal_215924-1238.jpg')} alt="Slide 4" className="slider-img" />
       </div>
       <div className="team-member">
         <h3>Вольхина Александра</h3>
         <p>Работает с лошадьми более 12 лет. Училась в Московской школе наездников. Тренер-наездник лошадей, инструктор верховой езды. Квалификации: наездник 3 категории.</p>
+        <img src={require('./assets/woman-walking-with-a-horse-in-the-countryside_23-2148200933.jpg')} alt="Slide 4" className="slider-img" />
       </div>
       <div className="team-member">
         <h3>Лекомцев Роман</h3>
         <p>Опыт работы с лошадьми более 15 лет.</p>
+        <img src={require('./assets/close-up-on-farmer-with-beautiful-horse_23-2149140364.jpg')} alt="Slide 4" className="slider-img" />
       </div>
         </div>
   </div>
